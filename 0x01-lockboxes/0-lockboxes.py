@@ -23,12 +23,10 @@ def canUnlockAll(boxes):
                 current_box_index = key
                 break
 
-        if old_box_index != current_box_index:
-            continue
-        else:
+        if old_box_index == current_box_index:
             break
 
-    for i in range(num_boxes):
-        if i not in visited_boxes and i != 0:
-            return False
-    return True
+    if any(i not in visited_boxes and i != 0 for i in range(1, num_boxes)):
+        return False
+    else:
+        return True
