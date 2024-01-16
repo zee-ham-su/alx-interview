@@ -1,33 +1,60 @@
-#!/usr/bin/env python3
-"""
-Minimum Operations interview question
-"""
+#!/usr/bin/python3
+'''Minimum Operations python3 challenge'''
 
 
 def minOperations(n):
-    """
-    Calculates the fewest number of operations needed
-    to result in exactly n H characters in a file.
-    """
-    characters_in_file = 1
-    clipboard = 0
-    operations_count = 0
+    '''calculates the fewest number of
+    operations needed to result in exactly n H
+    characters in this file.
+    Returns:
+        Integer : if n is impossible to achieve, return 0
+    '''
+    pasted_chars = 1  # how many chars in the file
+    clipboard = 0  # how many H's copied
+    counter = 0  # operations counter
 
-    while characters_in_file < n:
-        operations_count += 1 if clipboard == 0 else 0
-        clipboard = characters_in_file if clipboard == 0 else clipboard
+    while pasted_chars < n:
+        # if did not copy anything yet
+        if clipboard == 0:
+            # copyall
+            clipboard = pasted_chars
+            # increment operations counter
+            counter += 1
 
-        remaining_chars = n - characters_in_file
+        # if haven't pasted anything yet
+        if pasted_chars == 1:
+            # paste
+            pasted_chars += clipboard
+            # increment operations counter
+            counter += 1
+            # continue to next loop
+            continue
 
-        if remaining_chars < clipboard:
+        remaining = n - pasted_chars  # remaining chars to Paste
+        # check if impossible by checking if clipboard
+        # has more than needed to reach the number desired
+        # which also means num of chars in file is equal
+        # or more than in the clipboard.
+        # in both situations it's impossible to achieve n of chars
+        if remaining < clipboard:
             return 0
 
-        if remaining_chars % characters_in_file != 0:
-            characters_in_file += clipboard
-            operations_count += 1
+        # if can't be devided
+        if remaining % pasted_chars != 0:
+            # paste current clipboard
+            pasted_chars += clipboard
+            # increment operations counter
+            counter += 1
         else:
-            clipboard = characters_in_file
-            characters_in_file += clipboard
-            operations_count += 2
+            # copyall
+            clipboard = pasted_chars
+            # paste
+            pasted_chars += clipboard
+            # increment operations counter
+            counter += 2
 
-    return (operations_count if characters_in_file == n else 0)
+    # if got the desired result
+    if pasted_chars == n:
+        return counter
+    else:
+        return 0
