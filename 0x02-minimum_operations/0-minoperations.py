@@ -5,29 +5,32 @@ Minimum Operations interview question
 
 
 def minOperations(n):
+    """Determines the minimum number of operations required
+    to achieve exactly target_chars 'H' characters in this file
     """
-    Calculates the fewest number of operations needed
-    to result in exactly n H characters in a file.
-    """
-    characters_in_file = 1
     clipboard = 0
-    operations_count = 0
+    current_chars = 1
+    operations_counter = 0
 
-    while characters_in_file < n:
-        operations_count += 1 if clipboard == 0 else 0
-        clipboard = characters_in_file if clipboard == 0 else clipboard
+    while current_chars < n:
+        if clipboard == 0:
+            clipboard = current_chars
+            operations_counter += 1
+        if current_chars == 1:
+            current_chars += clipboard
+            operations_counter += 1
+            continue
 
-        remaining_chars = n - characters_in_file
-
-        if remaining_chars < clipboard:
+        remaining = n - current_chars
+        if remaining < clipboard:
             return 0
 
-        if remaining_chars % characters_in_file != 0:
-            characters_in_file += clipboard
-            operations_count += 1
+        if remaining % current_chars != 0:
+            current_chars += clipboard
+            operations_counter += 1
         else:
-            clipboard = characters_in_file
-            characters_in_file += clipboard
-            operations_count += 2
+            clipboard = current_chars
+            current_chars += clipboard
+            operations_counter += 2
 
-    return (operations_count if characters_in_file == n else 0)
+    return (operations_counter if current_chars == n else 0)
