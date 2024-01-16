@@ -6,8 +6,8 @@ Minimum Operations interview question
 
 def minOperations(n):
     """
-    Calculates the fewest number of operations needed to result in
-    exactly n H characters in a file.
+    Calculates the fewest number of operations needed
+    to result in exactly n H characters in a file.
     """
     characters_in_file = 1
     clipboard = 0
