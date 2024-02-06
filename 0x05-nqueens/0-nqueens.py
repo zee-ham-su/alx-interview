@@ -20,8 +20,9 @@ def is_safe(queens_positions, row, col):
     """
     for cord in queens_positions:
         queen_row, queen_col = cord
-        if queen_col == col or queen_col + \
-                (row - queen_row) == col or queen_col - (row - queen_row) == col:
+        if (queen_col == col or
+            queen_col + (row - queen_row) == col or
+                queen_col - (row - queen_row) == col):
             return False
     return True
 
