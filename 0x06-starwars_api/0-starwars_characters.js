@@ -22,7 +22,6 @@ request(apiUrl, { json: true }, (err, res, body) => {
     }
 
 
-    // Print character names
     body.characters.forEach((characterUrl) => {
         request(characterUrl, { json: true }, (err, res, character) => {
             if (err) {
