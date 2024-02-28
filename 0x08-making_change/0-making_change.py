@@ -16,4 +16,6 @@ def makeChange(coins, total):
         if total >= c:
             balance += total // c
             total = total % c
-    return -1
+    if total != 0:
+        return -1
+    return balance
