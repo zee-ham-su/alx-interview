@@ -2,6 +2,7 @@
 """ island perimeter
 """
 
+
 def island_perimeter(grid) -> int:
     """ function that returns the perimeter of the island
     """
