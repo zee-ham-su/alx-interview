@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" island perimeter
+""" perimeter of an island function
 """
 
 
