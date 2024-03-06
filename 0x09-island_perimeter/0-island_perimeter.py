@@ -4,7 +4,8 @@
 
 
 def island_perimeter(grid) -> int:
-    """ function that returns the perimeter of the island
+    """ function that returns 
+    the perimeter of the island
     """
     total_perimeter = 0
     for i in range(len(grid)):
