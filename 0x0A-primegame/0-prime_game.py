@@ -2,6 +2,7 @@
 """  prime game module
 """
 
+
 def isWinner(x, nums):
     """ Return: name of the player that
     won the most rounds
@@ -23,11 +24,11 @@ def isWinner(x, nums):
             c += 1
         array[i] = c
 
-    player1 = 0
+    play_1 = 0
     for n in nums:
-        player1 += array[n] % 2 == 1
-    if player1 * 2 == len(nums):
+        play_1 += array[n] % 2 == 1
+    if play_1 * 2 == len(nums):
         return None
-    if player1 * 2 > len(nums):
+    if play_1 * 2 > len(nums):
         return "Maria"
     return "Ben"
